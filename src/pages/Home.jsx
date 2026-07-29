@@ -11,7 +11,7 @@ const Home = () => {
     const t = translations[currentLang] || translations.ru;
     const apiLang = `${currentLang}-${currentLang.toUpperCase()}`;
 
-    // Функция смены языка (сохраняет в localStorage и перезагружает страницу)
+    
     const changeLanguage = (langCode) => {
         localStorage.setItem('appLang', langCode);
         window.location.reload();
@@ -44,7 +44,7 @@ const Home = () => {
 
     return (
         <div>
-            {/* Кнопки переключения языка */}
+           
             <div className="container mt-3 text-center">
                 <div className="btn-group" role="group" aria-label="Language switch">
                     <button 
@@ -52,7 +52,7 @@ const Home = () => {
                         className={`btn ${currentLang === 'ru' ? 'btn-primary' : 'btn-outline-primary'}`}
                         onClick={() => changeLanguage('ru')}
                     >
-                        Русский
+                        Русски
                     </button>
                     <button 
                         type="button" 
