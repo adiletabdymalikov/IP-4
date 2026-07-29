@@ -10,6 +10,7 @@ import Latest from "./pages/Latest";
 import Top from "./pages/Top";
 import Person from "./pages/Person";
 import PersonDetail from "./pages/PersonDetail";
+import Lang from "./pages/Lang";
 function App() {
   return (
     <BrowserRouter>
@@ -24,6 +25,8 @@ function App() {
         <Route path="/top" element={<Top />} />
         <Route path="/person" element={<Person />} />
         <Route path="/persondetail/:id" element={<PersonDetail />} />
+
+        <Route path="/lang" element={<Lang />} />
       </Routes>
     </BrowserRouter>
   );
