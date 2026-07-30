@@ -6,12 +6,10 @@ const Home = () => {
     let apikey = '3cc05ada7e70628b8d1bf36e4d1f6fd7';
     const [movie, setmovie] = useState(null);
     const [moviTrend, setMoviTrend] = useState(null);
-
     const currentLang = localStorage.getItem('appLang') || 'ru';
     const t = translations[currentLang] || translations.ru;
     const apiLang = `${currentLang}-${currentLang.toUpperCase()}`;
 
-    
     const changeLanguage = (langCode) => {
         localStorage.setItem('appLang', langCode);
         window.location.reload();
@@ -44,7 +42,6 @@ const Home = () => {
 
     return (
         <div>
-           
             <div className="container mt-3 text-center">
                 <div className="btn-group" role="group" aria-label="Language switch">
                     <button 
@@ -52,7 +49,7 @@ const Home = () => {
                         className={`btn ${currentLang === 'ru' ? 'btn-primary' : 'btn-outline-primary'}`}
                         onClick={() => changeLanguage('ru')}
                     >
-                        Русски
+                        Русский
                     </button>
                     <button 
                         type="button" 
@@ -75,32 +72,38 @@ const Home = () => {
                 <h1 style={{ fontSize: "65px" }}>{t.welcomeTitle}</h1>
                 <h1>{t.welcomeSubtitle}</h1>
             </div>
-
-            <div className="col-lg-11 mt-3 mx-auto text-white">
-                <br /><br />
-                <h4 className="mx-3">{t.whatIsPopular}</h4>
-                <div className="col-lg-12 scrollHome text-center mx-auto">
+            <div className="col-lg-11 mt-4 mx-auto text-white">
+                <h4 className="mx-3 mb-3">{t.whatIsPopular}</h4>
+                <div className="row justify-content-center text-center">
                     {movie != null ?
                         movie.map(i => (
-                            <div key={i.id} className="col-6 col-md-4 block p-2 mx-2 rounded-3 my-2 mt-3 mb-1 col-lg-2 text-white">
-                                <img width={'90%'} height={'280px'} src={`https://www.themoviedb.org/t/p/w600_and_h900_bestv2${i.poster_path}`} alt="" /> <br /><br />
-                                <a href={"/detail/" + i.id} className="text-info text-decoration-none"><h5>{i.title}</h5></a>   
-                                <p>{i.release_date}</p>
+                            <div key={i.id} className="col-6 col-md-4 col-lg-2 my-3">
+                                <a href={"/detail/" + i.id}>
+                                    <img width={'90%'} height={'280px'} className="rounded" src={`https://www.themoviedb.org/t/p/w600_and_h900_bestv2${i.poster_path}`} alt="" />
+                                </a>
+                                <br />
+                                <a href={"/detail/" + i.id} className="text-info text-decoration-none">
+                                    <h6 className="mt-2">{i.title}</h6>
+                                </a>   
+                                <p className="text-muted small">{i.release_date}</p>
                             </div>
                         )) : <div>{t.loading}</div>}
                 </div>
             </div>
-
-            <div className="col-lg-11 mt-3 mx-auto text-white">
-                <br /><br />
-                <h4 className="mx-3">{t.trending}</h4>
-                <div className="col-lg-12 scrollHome text-center mx-auto">
+            <div className="col-lg-11 mt-4 mx-auto text-white">
+                <h4 className="mx-3 mb-3">{t.trending}</h4>
+                <div className="row justify-content-center text-center">
                     {moviTrend != null ?
                         moviTrend.map(i => (
-                            <div key={i.id} className="col-6 col-md-4 bg-dark text-white p-2 mx-2 block mt-3 mb-1 col-lg-2 rounded border border-secondary">
-                                <img width={'90%'} height={'280px'} src={`https://www.themoviedb.org/t/p/w600_and_h900_bestv2${i.poster_path}`} alt="" /> <br /><br />
-                                <a href={"/detail/" + i.id} className="text-info text-decoration-none"><h5>{i.title}</h5></a>  
-                                <p>{i.release_date}</p>
+                            <div key={i.id} className="col-6 col-md-4 col-lg-2 my-3">
+                                <a href={"/detail/" + i.id}>
+                                    <img width={'90%'} height={'280px'} className="rounded" src={`https://www.themoviedb.org/t/p/w600_and_h900_bestv2${i.poster_path}`} alt="" />
+                                </a>
+                                <br />
+                                <a href={"/detail/" + i.id} className="text-info text-decoration-none">
+                                    <h6 className="mt-2">{i.title}</h6>
+                                </a>  
+                                <p className="text-muted small">{i.release_date}</p>
                             </div>
                         )) : <div>{t.loading}</div>}
                 </div>
